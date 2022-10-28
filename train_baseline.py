@@ -70,9 +70,11 @@ if __name__ == "__main__":
     test_path = './iowa_data/test'
 
     X, y = load_iowa_data(data_path=train_path)
-    scaler = MinMaxScaler(feature_range=(-1,1))
+    scaler = MinMaxScaler()
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=seed)
+    X_train = scaler.fit_transform(X_train)
+    X_test = scaler.fit_transform(X_test)
     model = LinearRegression().fit(X_train, y_train)
     # this reports the R^2 coefficient
     y_pred = model.predict(X_test)
