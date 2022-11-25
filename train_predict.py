@@ -1,10 +1,10 @@
 import numpy as np
 
 def evaluate_relative_error(y_pred, y):
-    return np.mean(np.abs(y-y_pred) / y_pred)
+    return np.mean(np.abs((y-y_pred) / y_pred))
 
 def evaluate_mse(y_pred, y):
-    return np.mean((y-y_pred)**2 / y_pred)
+    return np.mean((y-y_pred)**2) * (1/1e6)
 
 def train_model(model, X_train, y_train):
     model.fit(X_train, y_train)
