@@ -13,7 +13,7 @@ class DataGenerator:
     def __init__(self, data_path, write = False):
         self.data_path = data_path
         self.X = pd.read_csv(data_path + '.csv', sep=',')
-        self.seperate_feature_target('SalePrice')
+        self.seperate_feature_target('pmeorice')
         self.fillin_missing_values()
         self.str_to_categorical()
         # self.scale()

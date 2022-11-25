@@ -69,7 +69,7 @@ if __name__ == "__main__":
     train_path = './iowa_data/train'
     test_path = './iowa_data/test'
 
-    X, y = load_iowa_data(data_path=train_path)
+    X, y = load_iowa_data(data_path=train_path, write=True)
     scaler = MinMaxScaler()
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=seed)

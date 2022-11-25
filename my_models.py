@@ -1,5 +1,6 @@
 from sklearn.linear_model import LinearRegression, Ridge, Lasso
 from sklearn.ensemble import RandomForestRegressor, BaggingRegressor, AdaBoostRegressor, GradientBoostingRegressor
+from sklearn.neural_network import MLPRegressor
 
 # The variables specified below ar optimal values after tuning
 
@@ -23,3 +24,6 @@ def get_adaboost(alpha = 0.1, n_estimators = 300, loss='exponential'):
 
 def get_gradient_boost():
     return GradientBoostingRegressor()
+
+def get_mlp_regressor():
+    return MLPRegressor(hidden_layer_sizes=(64, 32), max_iter= 2000, alpha=0.1, learning_rate="adaptive")

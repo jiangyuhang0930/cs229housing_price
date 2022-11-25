@@ -15,3 +15,6 @@ def predict(model, X_test, y_test):
     rel_error = evaluate_relative_error(y_pred, y_test)
     mse = evaluate_mse(y_pred, y_test)
     return R2, rel_error, mse
+
+def select_feature(X_train, selection_function):
+    return selection_function(X_train)
