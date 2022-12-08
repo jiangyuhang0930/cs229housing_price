@@ -53,7 +53,8 @@ class DataGenerator:
     def scale(self, scaler = MinMaxScaler(feature_range=(-1,1))):
         """ Scale the features, default MinMaxScaler [-1, 1]
         """
-        self.X = scaler.fit_transform(self.X)
-
+        X_data = scaler.fit_transform(self.X)
+        self.X = pd.DataFrame(X_data, columns=self.X.columns)
+        
     def write_to_csv(self):
         self.X.to_csv(self.data_path + '_processed.csv')

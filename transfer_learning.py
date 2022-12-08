@@ -36,7 +36,7 @@ for i in range(NUM_TRIALS):
 
     # Without transfer learning part
     normal_gradient_boost = my_models.get_gradient_boost()
-    X, y = melb_raw.X[rand_idx,:], melb_raw.y[rand_idx]
+    X, y = melb_raw.X.iloc[rand_idx,:], melb_raw.y[rand_idx]
     X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.2)
     train_predict.train_model(normal_gradient_boost, X_train, y_train)
     no_transfer_pred = train_predict.predict(normal_gradient_boost, X_val, y_val)
@@ -120,7 +120,7 @@ for i in range(NUM_TRIALS):
     for j in range(3):
         rf2[j] += rf_pred_2[j] / NUM_TRIALS
 
-print("Using gradient boost without transfer learning on small dataset of 200:")
+print("Using gradient boost without transfer learning on the whole dataset of 200 instances:")
 print(no_transfer[0], no_transfer[1], no_transfer[2])
 print("Using linear model on 10+5 features:")
 print(lin1[0], lin1[1], lin1[2])
