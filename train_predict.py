@@ -29,7 +29,7 @@ def tune_hyperparameter(parameter_list, X, y):
     for parameter in parameter_list:
         print(parameter)
         X_train, y_train, X_val, y_val, _, _ = split_data(X, y)
-        model = my_models.get_gradient_boost()
+        model = my_models.get_mlp_regressor(layer_sizes=parameter)
         train_model(model, X_train, y_train)
         print("Validation Result: " + str(predict(model, X_val, y_val)))
 

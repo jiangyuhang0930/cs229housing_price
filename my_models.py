@@ -1,5 +1,5 @@
 from sklearn.linear_model import LinearRegression, Ridge, Lasso
-from sklearn.ensemble import RandomForestRegressor, BaggingRegressor, AdaBoostRegressor, GradientBoostingRegressor
+from sklearn.ensemble import RandomForestRegressor, AdaBoostRegressor, GradientBoostingRegressor, StackingRegressor
 from sklearn.neural_network import MLPRegressor
 from sklearn.tree import DecisionTreeRegressor
 
@@ -24,3 +24,14 @@ def get_gradient_boost(alpha=0.3, n_estimators=100):
 
 def get_mlp_regressor(layer_sizes=(64, 64), alpha=0.5):
     return MLPRegressor(hidden_layer_sizes=layer_sizes, max_iter= 5000, alpha=alpha)
+
+def get_stacking_regressor():
+    base_models = []
+    base_models.append(('linear', get_linear_model()))
+    base_models.append(('random_forest', get_random_forest()))
+    base_models.append(('adaboost', get_adaboost()))
+    base_models.append(('gradient_boost', get_gradient_boost()))
+    base_models.append(('mlp', get_mlp_regressor()))
+    return StackingRegressor(estimators=base_models)
+
+
