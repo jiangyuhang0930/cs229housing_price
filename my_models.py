@@ -1,7 +1,7 @@
 from sklearn.linear_model import LinearRegression, Ridge, Lasso
 from sklearn.ensemble import RandomForestRegressor, AdaBoostRegressor, GradientBoostingRegressor, StackingRegressor
 from sklearn.neural_network import MLPRegressor
-from sklearn.tree import DecisionTreeRegressor
+from sklearn.tree import DecisionTreeRegressor, ExtraTreeClassifier
 
 # The variables specified below ar optimal values after tuning
 def get_linear_model():
@@ -24,6 +24,9 @@ def get_gradient_boost(alpha=0.3, n_estimators=100):
 
 def get_mlp_regressor(layer_sizes=(64, 64), alpha=0.5):
     return MLPRegressor(hidden_layer_sizes=layer_sizes, max_iter= 5000, alpha=alpha)
+
+def get_extra_tree():
+    return ExtraTreeClassifier()
 
 def get_stacking_regressor():
     base_models = []

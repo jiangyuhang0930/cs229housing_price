@@ -2,6 +2,7 @@ import numpy as np
 import my_models
 from sklearn.model_selection import train_test_split
 import feature_selection
+import matplotlib.pyplot as plt
 seed = 1999
 np.random.seed(seed)
 def evaluate_relative_error(y_pred, y):
@@ -42,3 +43,19 @@ def feature_selection_experiment(k_list, X, y, method='regular'):
         model = my_models.get_gradient_boost()
         train_model(model, X_reduced_train, y_train)
         print("Validation Result: " + str(predict(model, X_reduced_val, y_val)))
+
+def plot_feature_importance(X, y, k=10):
+    X_train, y_train, _, _, _, _ = split_data(X, y)
+    X_reduced_train, selector = feature_selection.extra_tree_rfe_selection(X_train, y_train, k)   
+    chosen_column = ['Total area', 'First floor area', 'Garage area', 'Basement area', 'Basement area T1',
+        'Year built', 'Overall quality', 'Garage capacity', 'External quality', 'Kitchen quality']
+    model = my_models.get_extra_tree()
+    train_model(model, X_reduced_train, y_train)
+    print(model.feature_importances_)
+    print(chosen_column)
+    plt.figure(figsize=(11,5))
+    plt.barh(chosen_column, sorted(model.feature_importances_), color ='maroon')
+    plt.rc('ytick', labelsize=12) 
+    plt.xlabel('Feature Importance')
+    plt.title('Feature Importance of Top 10 Featues Using Extra Tree')
+    plt.savefig('importance.png')
