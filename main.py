@@ -46,19 +46,19 @@ X, y = cleaned_dataset.X, cleaned_dataset.y
 # k_list = [10, 50, 70, 75]
 # train_predict.feature_selection_experiment(k_list, X, y)
 
-# X_train, y_train, X_val, y_val, X_test, y_test = train_predict.split_data(X, y)
+X_train, y_train, X_val, y_val, X_test, y_test = train_predict.split_data(X, y)
 
 # model = my_models.get_gradient_boost()
 # train_predict.train_model(model, X_train, y_train)
 # print("Validation Result: " + str(train_predict.predict(model, X_val, y_val)))
 # print("Test Result: " + str(train_predict.predict(model, X_test, y_test)))
 
-# X_reduced_train, selector = feature_selection.extra_tree_rfe_selection(X_train, y_train, 70)
-# X_reduced_val = selector.transform(X_val)
-# X_reduced_test = selector.transform(X_test)
-# model = my_models.get_gradient_boost()
-# train_predict.train_model(model, X_reduced_train, y_train)
-# print("Validation Result: " + str(train_predict.predict(model, X_reduced_val, y_val)))
-# print("Test Result: " + str(train_predict.predict(model, X_reduced_test, y_test)))
+X_reduced_train, selector = feature_selection.extra_tree_rfe_selection(X_train, y_train, 70)
+X_reduced_val = selector.transform(X_val)
+X_reduced_test = selector.transform(X_test)
+model = my_models.get_gradient_boost()
+train_predict.train_model(model, X_reduced_train, y_train)
+print("Validation Result: " + str(train_predict.predict(model, X_reduced_val, y_val)))
+print("Test Result: " + str(train_predict.predict(model, X_reduced_test, y_test)))
 
 train_predict.plot_feature_importance(X, y)

@@ -1,4 +1,2 @@
 Iowa: https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/data
-Beijing: https://www.kaggle.com/datasets/ruiqurm/lianjia
-London: https://www.kaggle.com/code/justinas/house-prices-in-london/notebook
-Boston: https://www.kaggle.com/code/prasadperera/the-boston-housing-dataset
+Melbourne: https://www.kaggle.com/datasets/dansbecker/melbourne-housing-snapshot
